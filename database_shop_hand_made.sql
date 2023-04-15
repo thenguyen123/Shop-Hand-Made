@@ -37,8 +37,7 @@ create table customer (
 id bigint  primary key auto_increment,
 name varchar(45),
 day_of_birth varchar(45),
-phone_number varchar(45),
-id_card varchar(45) unicode,
+phone_number varchar(45) unicode,
 address varchar (225),
 gender boolean,
 email varchar(45) unique,
@@ -51,10 +50,9 @@ name varchar (45)
 ) ;
 create table product (
 id bigint  primary key auto_increment,
-image varchar(300),
 name varchar(45),
 prices double,
-description varchar(400),
+description varchar(500),
 date_submitted date,
 quantity int ,
 type_product int,
@@ -62,13 +60,25 @@ salesman_id bigint ,
 foreign key (salesman_id) references salesman(id),
 foreign key (type_product) references types(id)
 );
+create table image(
+id bigint primary key auto_increment,
+img varchar(225),
+product_id bigint ,
+foreign key (product_id) references product(id)
+);
 create table `order` (
-id int primary key auto_increment ,
+id bigint primary key auto_increment ,
 code_oder varchar(45) unique,
 date_purchase date ,
 total_pay double,
-product_id bigint ,
 customer_id bigint ,
-foreign key (product_id) references product(id),
 foreign key (customer_id) references customer(id)
 );
+create table order_detail(
+id bigint auto_increment primary key,
+amount int,
+order_id bigint,
+product_id bigint,
+foreign key (product_id) references product(id),
+foreign key (order_id) references `order`(id)
+)
