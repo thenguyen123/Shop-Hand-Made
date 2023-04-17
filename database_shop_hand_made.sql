@@ -4,46 +4,25 @@ create table role (
 id int primary key auto_increment,
 name varchar(25)
 );
-create table account(
-id bigint primary key auto_increment,
-password varchar(225)
-);
-create table account_role (
-id bigint  primary key auto_increment,
-id_role int,
-id_account bigint ,
-foreign key (id_role) references `role`(id),
-foreign key (id_account) references account(id)
-);
-create table position (
-id int primary key auto_increment,
-name varchar(45)
-);
-create	table salesman(
+create	table app_user(
 id bigint  primary key auto_increment,
 name varchar(45),
 phone_number varchar(45),
-id_card varchar(45) unique,
 address varchar (225),
 gender boolean,
 day_of_birth date,
-position_id int,
 email_account varchar(45) unicode,
-id_account bigint,
-foreign key (id_account) references account(id),
-foreign key (position_id) references `position`(id)
+password varchar(225)
 );
-create table customer (
+create table user_role (
 id bigint  primary key auto_increment,
-name varchar(45),
-day_of_birth varchar(45),
-phone_number varchar(45) unicode,
-address varchar (225),
-gender boolean,
-email varchar(45) unique,
-id_account bigint,
-foreign key (id_account) references account(id)
+id_role int,
+id_user bigint ,
+foreign key (id_role) references `role`(id),
+foreign key (id_user) references app_user(id)
 );
+
+
 create table types(
 id int primary key auto_increment, 
 name varchar (45)
@@ -52,27 +31,26 @@ create table product (
 id bigint  primary key auto_increment,
 name varchar(45),
 prices double,
-description varchar(500),
+description text,
 date_submitted date,
 quantity int ,
 type_product int,
 salesman_id bigint ,
-foreign key (salesman_id) references salesman(id),
 foreign key (type_product) references types(id)
 );
 create table image(
 id bigint primary key auto_increment,
-img varchar(225),
+img text,
 product_id bigint ,
 foreign key (product_id) references product(id)
 );
-create table `order` (
+create table order_product (
 id bigint primary key auto_increment ,
 code_oder varchar(45) unique,
 date_purchase date ,
 total_pay double,
-customer_id bigint ,
-foreign key (customer_id) references customer(id)
+id_user bigint ,
+foreign key (id_user) references app_user(id)
 );
 create table order_detail(
 id bigint auto_increment primary key,
@@ -80,5 +58,5 @@ amount int,
 order_id bigint,
 product_id bigint,
 foreign key (product_id) references product(id),
-foreign key (order_id) references `order`(id)
+foreign key (order_id) references order_product(id)
 )
