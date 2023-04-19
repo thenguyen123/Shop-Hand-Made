@@ -1,0 +1,17 @@
+<div class="row container-fluid " style="margin-top: 10px">
+  <div class="col-xs-12 col-sm-6 col-md-3 " *ngFor="let p of products">
+    <div class="card-jfy-item bg-light" style="width: 18rem;margin-top: 10px;margin-left: 50px">
+      <div class="card-jfy-image row">
+        <img height="288px" width="322px"
+             [src]="p.img[0].img" class="card-img-top"
+             alt="...">
+      </div>
+      <div class="row">
+        <h5 class="card-title">{{p.name}}</h5>
+        <p class="card-text">{{p.prices}}</p>
+
+      </div>
+      <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+    </div>
+  </div>
+</div>
