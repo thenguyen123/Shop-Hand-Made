@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../service/product.service';
 import {Product} from '../../../model/product';
+import {Producdto} from '../../../model/producdto';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +9,7 @@ import {Product} from '../../../model/product';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  products: Product [];
+  products: Producdto [];
   page = 0;
   size = 2;
 pageCount = 0;

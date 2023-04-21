@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: () => import('./component/product/product.module').then(module => module.ProductModule)
+  },
+  {
+    path: 'security',
+    loadChildren: () => import('./security-authentication/security-authentication.module')
+      .then(module => module.SecurityAuthenticationModule)
   }
 ];
 

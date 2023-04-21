@@ -8,7 +8,7 @@
       <div class="navbar-nav col-md-5 " style="margin-top: 9px">
         <p class="nav-item nav-link fs-5 ">Trang Chủ</p>
         <p class="nav-item nav-link fs-5">Kênh Bán Hàng</p>
-        <div class="nav-item dropdown ">
+        <div [hidden]="!isLoggedIn  || role!=='ROLE_ADMIN'" class="nav-item dropdown ">
           <p class="nav-link dropdown-toggle fs-5" data-bs-toggle="dropdown">Quản lý</p>
           <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
             <p class="dropdown-item">Nhân Viên</p>
@@ -29,11 +29,15 @@
     <div class="d-flex">
       <div class="col-6">
         <i class="fa-solid fa-cart-arrow-down fa-2xl" style="color: #19d797;margin-right: 60px; margin-top: 25px"></i>
-
       </div>
-      <div class=" col-6">
-        <img class="rounded-circle" src="https://vapa.vn/wp-content/uploads/2022/12/anh-dai-dien-dep-001.jpg"
-             width="50px" height="50px">
+      <div class="col-6" style="margin-right: 30px">
+        <div class="nav-item dropdown " [hidden]="!isLoggedIn">
+          <p class="nav-link dropdown-toggle " data-bs-toggle="dropdown">{{nameEmployee}}</p>
+          <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
+            <p class="dropdown-item">Đổi mật khẩu</p>
+            <p class="dropdown-item" (click)="logOut()">Đăng xuất</p>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -85,12 +89,12 @@
     </div>
     <div class="carousel-item">
       <img style="height: 600px"
-           src="https://simg1zen.myclip.vn/image1/2020/08/25/19/ce5dd610/ce5dd610-741e-4f73-88d7-63856d00bffe_640_360.jpg"
+           src="https://mega.com.vn/media/news/0305_lam-do-handmade-kieu-macrame.jpg"
            class="d-block w-100 " alt="...">
     </div>
     <div class="carousel-item">
       <img style="height:  600px"
-           src="https://1.bp.blogspot.com/-YAn4mXdybcU/X5GH_0By0dI/AAAAAAAAJAE/E8hagg6wuPYoifSBeeUiG-rJXvxT_BqiwCNcBGAsYHQ/s1280/thuyen%2Bbuom.jpg"
+           src="https://duhocchaudaiduong.edu.vn/cach-treo-anh-bang-day-thung-va-kep-go/imager_1114.jpg"
            class="d-block w-100 " alt="...">
     </div>
   </div>
