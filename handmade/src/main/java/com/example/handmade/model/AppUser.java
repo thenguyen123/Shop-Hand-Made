@@ -26,18 +26,19 @@ public class AppUser {
     private String password;
     @OneToMany(mappedBy = "appUser")
     @JsonIgnore
-    private Set<OrderProduct> productSet;
+    private Set<UserRole> userRoles;
     private boolean isDelete;
     public String getPassword() {
         return password;
     }
 
-    public Set<OrderProduct> getProductSet() {
-        return productSet;
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setProductSet(Set<OrderProduct> productSet) {
-        this.productSet = productSet;
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public void setPassword(String password) {
@@ -120,5 +121,6 @@ public class AppUser {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
 }
