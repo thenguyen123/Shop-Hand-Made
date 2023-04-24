@@ -1,6 +1,6 @@
 package com.example.handmade.service;
 
-import com.example.handmade.model.dto.ProductDto;
+import com.example.handmade.dto.ProductDto;
 import com.example.handmade.model.Image;
 import com.example.handmade.model.Product;
 import com.example.handmade.repository.IProductRepository;
@@ -36,5 +36,10 @@ public class ProductService implements IProductService {
         page1 = new PageImpl<>(productDtos,page.getPageable(),page.getTotalElements());
 
         return page1;
+    }
+
+    @Override
+    public Product findById(long id) {
+        return iProductRepository.findById(id);
     }
 }

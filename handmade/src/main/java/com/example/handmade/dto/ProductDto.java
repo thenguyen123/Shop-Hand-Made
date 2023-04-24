@@ -1,4 +1,4 @@
-package com.example.handmade.model.dto;
+package com.example.handmade.dto;
 
 import com.example.handmade.model.Image;
 import com.example.handmade.model.Product;

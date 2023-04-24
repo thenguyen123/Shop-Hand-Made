@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface IProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "select * from product where is_delete=false", nativeQuery = true)
     Page<Product> findAllBy(Pageable pageable);
+    @Query(value = "select * from product where id = 1 and is_delete=false", nativeQuery = true)
+    Product findById(long id);
 }
