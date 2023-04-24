@@ -1,6 +1,6 @@
-<div class="row container-fluid " style="margin-top: 10px">
-  <div class="col-xs-12 col-sm-6 col-md-3 " *ngFor="let p of products">
-    <div class="card-jfy-item bg-light" style="width: 18rem;margin-top: 10px;margin-left: 50px">
+<div class="container-fluid row" style="margin-top: 10px">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let p of products">
+    <div class="card-jfy-item bg-light" style="width: 18rem;margin-top: 10px;margin-left: 30px">
       <div class="card-jfy-image row">
         <img height="210px" width="300px"
              [src]="p.img.img" class="card-img-top"
@@ -9,8 +9,8 @@
       <div class="row  " style="margin: 1px 1px 1px 1px">
           <p class="card-title">{{p.product.name.length> 30 ?( p.product.name | slice:0:30 )+ '...': p.product.name }}</p>
 
-      <p style="color: red;" >Giá sản phẩm :  <span   class="card-text">{{p.product.prices}}</span>VND</p>
-        <a  class="btn btn-primary"> Xem chi tiết</a>
+      <p style="color: red;" >Giá sản phẩm :  <span   class="card-text">{{p.product.prices | currency: 'VND': 'symbol':'1.0-0' }}</span></p>
+        <a  class="btn btn-primary" routerLink="/product/detail/{{p.product.id}}"> Xem chi tiết</a>
       </div>
 
     </div>

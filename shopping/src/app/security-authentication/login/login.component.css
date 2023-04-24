@@ -1,27 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
 /* GENERAL RESETS */
-* {
-  margin: 0;
-  padding: 0;
-}
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-a {
-  color: #666;
-  text-decoration: none;
-}
-a:hover {
-  color: #4FDA8C;
-}
 
-/* BODY */
-body {
+.login{
   position: relative;
   color: #666;
   font: 16px/26px "Raleway", sans-serif;
@@ -32,6 +12,10 @@ body {
   background: -webkit-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
   background: linear-gradient(180deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
   overflow:hidden;
+}
+/* BODY */
+a{
+  text-decoration: none;
 }
 
 /* BUTTON */
@@ -74,12 +58,12 @@ a.button:hover {
   margin: 0;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+margin-bottom: -20px;
 }
 
 /* WRAP */
 .wrap {
-  position: static;
+
   margin: auto;
   width: 100%;
   height: auto;
@@ -118,7 +102,7 @@ a.button:hover {
 
 /* USER (FORM WRAPPER) */
 .user {
-  position: relative;
+
   z-index: 0;
   float: none;
   margin: 0 auto;
@@ -293,7 +277,7 @@ a.button:hover {
 
 /* CONTENT */
 .content {
-  position: fixed;
+
   z-index: 1;
   float: none;
   margin: 0 auto;
@@ -681,7 +665,7 @@ input {
   }
   /* WRAP */
   .wrap {
-    position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
