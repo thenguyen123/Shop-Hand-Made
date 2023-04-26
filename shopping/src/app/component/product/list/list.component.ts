@@ -25,7 +25,29 @@ export class ListComponent implements OnInit {
   findAll() {
     this.productService.findAll(this.page, this.size).subscribe(param => {
       this.products = param.content;
-      this.pageCount = param.totalPage;
+      this.pageCount = param.totalPages;
+      console.log(this.pageCount);
     });
+  }
+
+  next() {
+    this.page++;
+    this.findAll();
+  }
+
+
+  previous() {
+    this.page--;
+    this.findAll();
+  }
+
+  first() {
+    this.page = 0;
+    this.findAll();
+  }
+
+  last() {
+    this.page = this.pageCount - 1;
+    this.findAll();
   }
 }

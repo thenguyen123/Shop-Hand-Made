@@ -16,3 +16,14 @@
     </div>
   </div>
 </div>
+<div class="d-flex justify-content-center " style="margin-top: 20px">
+  <button class="btn btn-outline-success" (click)="first()">
+    Trang Đầu
+  </button>
+  <button class="btn btn-outline-success"  (click)="previous()"  [style.display]=" page==0 ? 'none': 'block'">{{page}}</button>
+  <button class="btn btn-success" >{{page+1}}</button>
+  <button class="btn btn-outline-success" (click)="next()" [style.display]=" page==pageCount-1 ? 'none': 'block'">{{page+2}}</button>
+  <button class="btn btn-outline-success" (click)="last()">
+    Trang  Cuối
+  </button>
+</div>

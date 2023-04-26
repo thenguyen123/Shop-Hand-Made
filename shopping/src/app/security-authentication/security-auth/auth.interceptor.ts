@@ -38,7 +38,6 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authRequest)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-
           if (error.status === 401 || error.status === 403) {
             Swal.fire({
               text: 'Bạn không được phép truy cập đường dẫn này!',

@@ -14,10 +14,10 @@ export class ProductService {
   }
 
   findAll(page: number, size: number): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/api/user/product/list?page=' + page + '&size=' + size);
+    return this.http.get<any>('http://localhost:8080/api/product/list?page=' + page + '&size=' + size);
   }
 
   findById(id: number): Observable<ProductDetail> {
-    return this.http.get<ProductDetail>('http://localhost:8080/api/user/product/detail?id=' + id);
+    return this.http.get<ProductDetail>('http://localhost:8080/api/product/detail?id=' + id);
   }
 }
