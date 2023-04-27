@@ -3,25 +3,34 @@ package com.example.handmade.model;
 import javax.persistence.*;
 
 @Entity
-public class OrderDetail {
+public class CartDetail {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private  long id;
-    private  int amount;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private int amount;
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private OrderProduct order;
+    private Cart cart;
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private  Product product;
+    private Product product;
+    private boolean isFlag;
 
-    public OrderDetail() {
+    public CartDetail() {
     }
 
-    public OrderDetail(long id, int amount, OrderProduct order, Product product) {
+    public boolean isFlag() {
+        return isFlag;
+    }
+
+    public void setFlag(boolean flag) {
+        isFlag = flag;
+    }
+
+    public CartDetail(long id, int amount, Cart cart, Product product) {
         this.id = id;
         this.amount = amount;
-        this.order = order;
+        this.cart = cart;
         this.product = product;
     }
 
@@ -41,12 +50,12 @@ public class OrderDetail {
         this.amount = amount;
     }
 
-    public OrderProduct getOrder() {
-        return order;
+    public Cart getOrder() {
+        return cart;
     }
 
-    public void setOrder(OrderProduct order) {
-        this.order = order;
+    public void setOrder(Cart order) {
+        this.cart = cart;
     }
 
     public Product getProduct() {

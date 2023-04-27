@@ -6,28 +6,27 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class OrderProduct {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String codeOrder;
+
     @Column(columnDefinition = "date")
     private String datePurchase;
     private double totalPay;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "cart")
     @JsonIgnore
-    private Set<OrderDetail> orderDetailSet;
-    @ManyToOne
+    private Set<CartDetail> orderDetailSet;
+    @OneToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private AppUser appUser;
 
-    public OrderProduct() {
+    public Cart() {
     }
 
-    public OrderProduct(long id, String codeOrder, String datePurchase, double totalPay, Set<OrderDetail> orderDetailSet, AppUser appUser) {
+    public Cart(long id, String codeOrder, String datePurchase, double totalPay, Set<CartDetail> orderDetailSet, AppUser appUser) {
         this.id = id;
-        this.codeOrder = codeOrder;
         this.datePurchase = datePurchase;
         this.totalPay = totalPay;
         this.orderDetailSet = orderDetailSet;
@@ -50,13 +49,6 @@ public class OrderProduct {
         this.id = id;
     }
 
-    public String getCodeOrder() {
-        return codeOrder;
-    }
-
-    public void setCodeOrder(String codeOrder) {
-        this.codeOrder = codeOrder;
-    }
 
     public String getDatePurchase() {
         return datePurchase;
@@ -74,11 +66,11 @@ public class OrderProduct {
         this.totalPay = totalPay;
     }
 
-    public Set<OrderDetail> getOrderDetailSet() {
+    public Set<CartDetail> getOrderDetailSet() {
         return orderDetailSet;
     }
 
-    public void setOrderDetailSet(Set<OrderDetail> orderDetailSet) {
+    public void setOrderDetailSet(Set<CartDetail> orderDetailSet) {
         this.orderDetailSet = orderDetailSet;
     }
 }

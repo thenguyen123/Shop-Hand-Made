@@ -3,7 +3,6 @@ package com.example.handmade.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.Positive;
 import java.util.Set;
 
 @Entity
@@ -28,9 +27,9 @@ public class Product {
     private Set<Image> image;
     @OneToMany(mappedBy = "product")
     @JsonIgnore
-    private Set<OrderDetail> orderDetailSet;
+    private Set<CartDetail> orderDetailSet;
 
-    public Product(long id, String name, double prices, String description, String dateSubmitted, int quantity, Types types, Set<Image> image, Set<OrderDetail> orderDetailSet, boolean isDelete) {
+    public Product(long id, String name, double prices, String description, String dateSubmitted, int quantity, Types types, Set<Image> image, Set<CartDetail> orderDetailSet, boolean isDelete) {
         this.id = id;
         this.name = name;
         this.prices = prices;
@@ -56,11 +55,11 @@ public class Product {
     }
 
 
-    public Set<OrderDetail> getOrderDetailSet() {
+    public Set<CartDetail> getOrderDetailSet() {
         return orderDetailSet;
     }
 
-    public void setOrderDetailSet(Set<OrderDetail> orderDetailSet) {
+    public void setOrderDetailSet(Set<CartDetail> orderDetailSet) {
         this.orderDetailSet = orderDetailSet;
     }
 
