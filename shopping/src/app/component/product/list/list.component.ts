@@ -3,6 +3,7 @@ import {ProductService} from '../../../service/product.service';
 import {Product} from '../../../model/product';
 import {Producdto} from '../../../model/producdto';
 import {TokenStorageService} from '../../../security-authentication/service/token-storage.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,19 +15,30 @@ export class ListComponent implements OnInit {
   page = 0;
   size = 5;
   pageCount = 0;
-  constructor(private productService: ProductService) {
+  searchName = '';
+  idTypes = 0;
+
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
-
-    this.findAll();
+    this.activatedRoute.paramMap.subscribe(param => {
+      this.searchName = param.get('name');
+      this.idTypes = +param.get('id');
+      if (this.searchName === 'l1') {
+        this.searchName = '';
+        this.findAll();
+      } else {
+        this.findAll();
+      }
+    });
   }
 
   findAll() {
-    this.productService.findAll(this.page, this.size).subscribe(param => {
+    this.productService.search(this.searchName, this.page, this.size, this.idTypes).subscribe(param => {
       this.products = param.content;
       this.pageCount = param.totalPages;
-      console.log(this.pageCount);
     });
   }
 

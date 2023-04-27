@@ -12,12 +12,17 @@ export class ProductService {
 
   constructor(private http: HttpClient) {
   }
-
-  findAll(page: number, size: number): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/api/product/list?page=' + page + '&size=' + size);
-  }
-
   findById(id: number): Observable<ProductDetail> {
-    return this.http.get<ProductDetail>('http://localhost:8080/api/product/detail?id=' + id);
+    return this.http.get<ProductDetail>('http://localhost:8080/api/public/product/detail?id=' + id);
   }
+
+  search(name: string, page: number, size: number, idTypes: number): Observable<any> {
+    return this.http.get<any>
+    ('http://localhost:8080/api/public/product/search?page=' + page + '&size=' + size  + '&name=' + name + '&idTypes=' + idTypes);
+  }
+  findCard(userName: string , page: number, size: number): Observable<any> {
+    return this.http.get<any>
+    ('http://localhost:8080/api/public/product/card?userName=' +  userName + '&size=' + size  + '&page=' + page );
+  }
+
 }

@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <h1 style="text-align: center; margin-bottom: 10px">Shopping Cart</h1>
+  <div class="row" style="margin-top: 15px" *ngFor="let p of products">
+
+    <div class="col-md-1"></div>
+    <div class="col-md-10 shadow-lg p-3 mb-5 bg-body rounded">
+      <div class="card-body  row align-items-center" >
+        <div class="col-md-4">
+          <img [src]="p.img[0].img" height="173" width="200"/>
+        </div>
+        <div class="col-md-3">
+          <p class=" align-middle">{{p.name}}</p>
+        </div>
+        <div class="col-md-1">
+          <p >{{p.prices| number:'1.0-0'}}VND</p>
+        </div>
+        <div class="col-md-1">
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-outline-primary ">-</button>
+            <button type="button" class="btn btn-outline-primary ">1</button>
+            <button type="button" class="btn btn-outline-primary ">+</button>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <p>{{p.prices| number:'1.0-0'}}VND</p>
+        </div>
+        <div class="col-md-1">
+          <i  class="fa-solid fa-trash fa-2xl" style="color: #16c5ba; margin-left: 80px"></i>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+
+</div>
+
+

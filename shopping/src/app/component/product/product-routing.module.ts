@@ -4,11 +4,13 @@ import {ListComponent} from './list/list.component';
 import {DetailComponent} from './detail/detail.component';
 import {AdminGuard} from '../../security-authentication/security-auth/admin.guard';
 import {UserGuard} from '../../security-authentication/security-auth/user.guard';
+import {CardComponent} from './card/card.component';
 
 
 const routes: Routes = [
-  {path: 'list', component: ListComponent },
-  {path: 'detail/:id', component: DetailComponent }
+  {path: 'list/:name/:id', component: ListComponent },
+  {path: 'detail/:id', component: DetailComponent },
+  {path: 'card', component: CardComponent }
 ];
 
 @NgModule({

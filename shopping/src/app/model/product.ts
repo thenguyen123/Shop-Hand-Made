@@ -9,5 +9,7 @@ export interface Product {
   dateSubmitted?: string;
   img?: Image[];
   types: Types;
+  amount?: number;
+  idCart?: number;
 }
 

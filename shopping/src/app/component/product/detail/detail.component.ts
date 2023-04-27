@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Product} from '../../../model/product';
 import {ProductDetail} from '../../../model/product-detail';
 import {Image} from '../../../model/image';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Cart} from '../../../model/cart';
 
 @Component({
   selector: 'app-detail',
@@ -12,9 +14,11 @@ import {Image} from '../../../model/image';
 })
 export class DetailComponent implements OnInit {
   id: number;
-  product: ProductDetail;
+  products: ProductDetail;
   imgProduct: Image[];
-
+  cartAdd: FormGroup;
+  cart: Cart;
+  product: Product;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) {
   }
 
@@ -23,12 +27,18 @@ export class DetailComponent implements OnInit {
       this.id = +param.get('id');
     });
     this.findById();
+    this.cartAdd = new FormGroup({
+      id: new FormControl(),
+      amount: new FormControl(),
+      cart: new FormControl(),
+      product: new FormControl(),
+    });
   }
 
   findById() {
     this.productService.findById(this.id).subscribe(param => {
-      this.product = param;
-      this.imgProduct = this.product.imageList;
+      this.products = param;
+      this.imgProduct = this.products.imageList;
     });
   }
 }

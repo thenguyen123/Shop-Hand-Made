@@ -9,7 +9,6 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: () => import('./component/product/product.module').then(module => module.ProductModule)
-    , canActivate: [AdminGuard]
   },
   {
     path: 'security',

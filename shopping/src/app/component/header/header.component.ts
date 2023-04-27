@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from "sweetalert2";
+import {Component, OnInit} from '@angular/core';
+import Swal from 'sweetalert2';
 import {TokenStorageService} from '../../security-authentication/service/token-storage.service';
 import {ShareService} from '../../security-authentication/service/share.service';
 import {Router} from '@angular/router';
+import {Types} from '../../model/types';
+import {TypesService} from '../../service/types.service';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +14,16 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   username: string;
   currentUser: string;
-  nameEmployee: string;
+  nameUser: string;
   role: string;
   isLoggedIn = false;
+  searchName = '';
+  types: Types[];
+  idTypes = 0;
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
-              private router: Router) {
+              private router: Router, private typesService: TypesService) {
   }
 
   loadHeader(): void {
@@ -33,10 +38,12 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.findAllTypes();
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
     });
     this.loadHeader();
+
   }
 
   async logOut() {
@@ -54,7 +61,17 @@ export class HeaderComponent implements OnInit {
 
   getUsernameAccount() {
     if (this.tokenStorageService.getToken()) {
-      this.nameEmployee = this.tokenStorageService.getUser().name;
+      this.nameUser = this.tokenStorageService.getUser().name;
     }
+  }
+
+  search() {
+    this.router.navigate(['product/list/', this.searchName, this.idTypes]);
+  }
+
+  findAllTypes() {
+    this.typesService.findAll().subscribe(param => {
+      this.types = param;
+    });
   }
 }
