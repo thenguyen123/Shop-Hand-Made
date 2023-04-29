@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {AddCart} from '../model/add-cart';
-import {CartDetail} from '../model/cart-detail';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CardService {
+export class AppUserService {
 
   constructor(private http: HttpClient) { }
-  addCart(cart: CartDetail) {
-    return this.http.post('http://localhost:8080/api/public/cart/add', cart);
+  findUser(email: string): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/public/appUser?email=' + email);
   }
 
 }
