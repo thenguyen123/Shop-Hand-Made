@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-5 mt-5">
         <div class="card mb-3">
-          <img class="card-img img-fluid" [src]="imgProduct[0].img" alt="Card image cap" id="product-detail">
+          <img class="card-img img-fluid" [src]="imgProduct[0]?.img" alt="Card image cap" id="product-detail">
         </div>
         <div class="row" style="width: 50%; ">
           <!--Start Controls-->
@@ -13,7 +13,7 @@
                 <img width="300px" height="200px" [src]="imgProduct[0]?.img" class="d-block w-100" alt="...">
 
               </div>
-              <div class="carousel-item " *ngFor="let i of imgProduct">
+              <div class="carousel-item "  *ngFor="let i of imgProduct">
                 <img width="300px" height="200px" [src]="i.img" class="d-block w-100  " alt="...">
               </div>
             </div>

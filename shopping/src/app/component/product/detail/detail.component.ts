@@ -12,6 +12,7 @@ import {AppUserService} from '../../../service/app-user.service';
 import {TokenStorageService} from '../../../security-authentication/service/token-storage.service';
 import {CardService} from '../../../service/card.service';
 import Swal from 'sweetalert2';
+import {CartDetail} from '../../../model/cart-detail';
 
 @Component({
   selector: 'app-detail',
@@ -29,6 +30,7 @@ export class DetailComponent implements OnInit {
   amount = 1;
   nameUser: string;
   appUser2: AppUser;
+  cart2: CartDetail;
 
   constructor(private productService: ProductService,
               private route: Router,
@@ -66,13 +68,20 @@ export class DetailComponent implements OnInit {
   }
 
   addCart(id: number) {
-    this.cartAdd1 = new FormGroup({
-      amount: new FormControl(this.amount),
-      cart: new FormControl(this.appUser2.idCard),
-      product: new FormControl(id),
-    });
-    this.cartService.addCart(this.cartAdd1.value).subscribe(next => {
-      alert('thanhf coong');
+    //
+    // this.cartAdd1 = new FormGroup({
+    //   amount: new FormControl(this.amount),
+    //   cart: new FormControl(this.appUser2),
+    //   product: new FormControl(id),
+    // });
+    this.cart2 = {
+      amount: this.amount,
+      cart: {id: this.appUser2.idCard},
+      product: {id},
+    };
+    console.log(this.cart2);
+    this.cartService.addCart(this.cart2).subscribe(next => {
+      alert('thành công');
     });
   }
 

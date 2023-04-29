@@ -8,7 +8,7 @@ export interface Product {
   description?: string;
   dateSubmitted?: string;
   img?: Image[];
-  types: Types;
+  types?: Types;
   amount?: number;
   idCart?: number;
 }
