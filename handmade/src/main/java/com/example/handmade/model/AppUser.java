@@ -27,6 +27,8 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser")
     @JsonIgnore
     private Set<UserRole> userRoles;
+    @OneToOne(mappedBy =  "appUser")
+    private Cart cart;
     private boolean isDelete;
     public String getPassword() {
         return password;

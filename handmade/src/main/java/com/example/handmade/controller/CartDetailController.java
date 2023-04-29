@@ -14,8 +14,8 @@ public class CartDetailController {
     @Autowired
     private ICartDetailService iCartDetailService;
 
-    @GetMapping("cart/add")
-    public ResponseEntity addToCart(@RequestParam long id, @RequestBody CartDetail cartDetail) {
+    @PostMapping("cart/add")
+    public ResponseEntity addToCart( @RequestBody CartDetail cartDetail) {
         if (cartDetail == null) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

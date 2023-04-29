@@ -50,11 +50,11 @@ public class CartDetail {
         this.amount = amount;
     }
 
-    public Cart getOrder() {
+    public Cart getCart() {
         return cart;
     }
 
-    public void setOrder(Cart order) {
+    public void setCart(Cart cart) {
         this.cart = cart;
     }
 

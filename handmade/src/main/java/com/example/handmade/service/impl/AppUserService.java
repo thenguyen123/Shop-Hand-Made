@@ -1,5 +1,6 @@
 package com.example.handmade.service.impl;
 
+import com.example.handmade.dto.AppUserDto;
 import com.example.handmade.model.AppUser;
 import com.example.handmade.repository.IAppUserRepository;
 import com.example.handmade.service.IAppUserService;
@@ -11,7 +12,7 @@ public class AppUserService implements IAppUserService {
     @Autowired
     private IAppUserRepository iAppUserRepository;
     @Override
-    public AppUser findByEmail(String name) {
-        return null;
+    public AppUserDto findByEmail(String name) {
+        return iAppUserRepository.findAppUsersByEmail(name);
     }
 }
