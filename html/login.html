@@ -10,35 +10,10 @@
 <!-- LOGIN MODULE -->
 <div class="login">
     <div class="wrap">
-        <!-- TOGGLE -->
-        <div id="toggle-wrap">
-            <div id="toggle-terms">
-                <div id="cross">
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-        <!-- TERMS -->
-        <!-- RECOVERY -->
-        <div class="recovery">
-            <h2>Password Recovery</h2>
-            <p>Enter either the <strong>email address</strong> or <strong>username</strong> on the account and <strong>click Submit</strong></p>
-            <p>We'll email instructions on how to reset your password.</p>
-            <form class="recovery-form" action="" method="post">
-                <input type="text" class="input" id="user_recover" placeholder="Enter Email or Username Here">
-                <input type="submit" class="button" value="Submit">
-            </form>
-            <p class="mssg">An email has been sent to you with further instructions.</p>
-        </div>
-
-        <!-- SLIDER -->
         <div class="content">
-            <!-- LOGO -->
             <div class="logo">
                 <a href="#"><img src="http://res.cloudinary.com/dpcloudinary/image/upload/v1506186248/logo.png" alt=""></a>
             </div>
-            <!-- SLIDESHOW -->
             <div id="slideshow">
                 <div class="one">
                     <h2><span>XIN CHÀO</span></h2>
@@ -46,46 +21,44 @@
                 </div>
             </div>
         </div>
-        <!-- LOGIN FORM -->
+
         <div class="user">
-            <!-- ACTIONS
-            <div class="actions">
-                <a class="help" href="#signup-tab-content">Sign Up</a><a class="faq" href="#login-tab-content">Login</a>
-            </div>
-            -->
             <div class="form-wrap">
-                <!-- TABS -->
                 <div class="tabs">
-                    <h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Đăng nhập<span></a></h3>
-                    <h3 class="signup-tab"><a class="sign-up" href="#signup-tab-content"><span>Đăng ký</span></a></h3>
+                    <h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Đăng nhập</span></a></h3>
                 </div>
-                <!-- TABS CONTENT -->
                 <div class="tabs-content">
-                    <!-- TABS CONTENT LOGIN -->
                     <div id="login-tab-content" class="active">
-                        <form class="login-form" action="" method="post">
-                            <input type="text" class="input" id="user_login" autocomplete="off" placeholder="Email or Username">
-                            <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-                            <input type="checkbox" class="checkbox" checked id="remember_me">
-                            <label for="remember_me">Remember me</label>
-                            <input type="submit" class="button" value="Login">
-                        </form>
+                            <form class="login-form" *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <h1 style="text-align: center; margin-bottom: 5%">Đăng nhập</h1>
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="form2Example1" autofocus formControlName="username" class="input"
+                                           placeholder="Tài khoản email"/>
+                                    <p class="error" *ngIf="loginForm.controls.username?.errors?.required && loginForm.controls.username?.touched">Xin vui lòng nhập địa chỉ email.</p>
+                                    <p class="error" *ngIf="loginForm.controls.username?.errors?.email && loginForm.controls.username?.touched">Địa chỉ email không đúng định dạng.</p>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="form2Example2" formControlName="password"class="input"
+                                           placeholder="Mật khẩu"/>
+                                    <p class="error" *ngIf="loginForm.controls.password?.errors?.required && loginForm.controls.password?.touched">Xin vui lòng nhập mật khẩu.</p>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col d-flex justify-content-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="form2Example31"
+                                                   formControlName="rememberMe"/>
+                                            <label >Remember me</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-block vw-100" style="background-color: darkorange">Đăng nhập</button>
+                                </div>
+                            </form>
+
                         <div class="help-action">
                             <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="#">
                                 Quên mật khẩu?</a></p>
-                        </div>
-                    </div>
-                    <!-- TABS CONTENT SIGNUP -->
-                    <div id="signup-tab-content">
-                        <form class="signup-form" action="" method="post">
-                            <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email">
-                            <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Username">
-                            <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-                            <input type="submit" class="button" value="Sign Up">
-                        </form>
-                        <div class="help-action">
-                            <p>By signing up, you agree to our</p>
-                            <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="agree" href="#">Terms of service</a></p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +66,5 @@
         </div>
     </div>
 </div>
-
 </body>
-
 </html>

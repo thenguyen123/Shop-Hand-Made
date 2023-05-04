@@ -22,16 +22,7 @@ a:hover {
 
 /* BODY */
 body {
-    position: relative;
-    color: #666;
-    font: 16px/26px "Raleway", sans-serif;
-    text-align: center;
-    height: 100%;
-    background: -moz-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(34,46,64,1)), color-stop(100%, rgba(81,195,184,1)));
-    background: -webkit-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
-    background: linear-gradient(180deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
-    overflow:hidden;
+
 }
 
 /* BUTTON */
@@ -616,25 +607,7 @@ input {
     font-family: inherit;
     color: #fff;
 }
-.form-wrap form .button {
-    margin: 1em 0;
-    padding: .2em 3em;
-    width: auto;
-    display: block;
-    background-color: #28A55F;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: .8em;
-    border-radius: 30px;
-    background: -moz-linear-gradient(270deg, rgba(105,221,201,1) 0%, rgba(78,193,182,1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(105,221,201,1)), color-stop(100%, rgba(78,193,182,1)));
-    background: -webkit-linear-gradient(270deg, rgba(105,221,201,1) 0%, rgba(78,193,182,1) 100%);
-    background: linear-gradient(180deg, rgba(105,221,201,1) 0%, rgba(78,193,182,1) 100%);
-    -webkit-box-shadow: 0px 0px 37px -9px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 37px -9px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 37px -9px rgba(0,0,0,0.75);
-}
+
 .form-wrap form .button:hover {
     background-color: #4FDA8C;
 }
