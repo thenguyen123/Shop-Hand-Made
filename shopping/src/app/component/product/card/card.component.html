@@ -1,39 +1,111 @@
-<div class="container-fluid">
-  <h1 style="text-align: center; margin-bottom: 10px">Shopping Cart</h1>
-  <div class="row" style="margin-top: 15px" *ngFor="let p of products">
+<!--<div class="container-fluid">-->
+<!--  <h1 style="text-align: center; margin-bottom: 10px">Shopping Cart</h1>-->
+<!--  <div class="row" style="margin-top: 15px" *ngFor="let p of products">-->
 
-    <div class="col-md-1"></div>
-    <div class="col-md-10 shadow-lg p-3 mb-5 bg-body rounded">
-      <div class="card-body  row align-items-center" >
-        <div class="col-md-4">
-          <img [src]="p.img[0].img" height="173" width="200"/>
-        </div>
-        <div class="col-md-3">
-          <p class=" align-middle">{{p.name}}</p>
-        </div>
-        <div class="col-md-1">
-          <p >{{p.prices| number:'1.0-0'}}VND</p>
-        </div>
-        <div class="col-md-1">
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-outline-primary ">-</button>
-            <button type="button" class="btn btn-outline-primary ">1</button>
-            <button type="button" class="btn btn-outline-primary ">+</button>
+<!--    <div class="col-md-1"></div>-->
+<!--    <div class="col-md-10 shadow-lg p-3 mb-5 bg-body rounded">-->
+<!--      <div class="card-body  row align-items-center" >-->
+<!--        <div class="col-md-4">-->
+<!--          <img [src]="p.img[0].img" height="173" width="200"/>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--          <p class=" align-middle">{{p.name}}</p>-->
+<!--        </div>-->
+<!--        <div class="col-md-1">-->
+<!--          <p >{{p.prices| number:'1.0-0'}}VND</p>-->
+<!--        </div>-->
+<!--        <div class="col-md-1">-->
+<!--          <div class="btn-group" role="group" aria-label="Basic mixed styles example">-->
+<!--            <button type="button" class="btn btn-outline-primary ">-</button>-->
+<!--            <button type="button" class="btn btn-outline-primary ">1</button>-->
+<!--            <button type="button" class="btn btn-outline-primary ">+</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-1">-->
+<!--          <p>{{p.prices| number:'1.0-0'}}VND</p>-->
+<!--        </div>-->
+<!--        <div class="col-md-1">-->
+<!--          <i  class="fa-solid fa-trash fa-2xl" style="color: #16c5ba; margin-left: 80px"></i>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-1"></div>-->
+<!--  </div>-->
+
+<!--</div>-->
+<section class="px-4 py-5 w-100" style="background-color: #d2c9ff; border-radius: .5rem .5rem 0 0;">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+        <div class="card-body p-0">
+          <div class="row g-0">
+            <div class="col-lg-8">
+              <div class="p-5">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                  <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                  <h6 class="mb-0 text-muted">{{items}} sản phẩm</h6>
+                </div>
+                <hr class="my-4">
+                <div class="row mb-4  align-items-center" *ngFor="let p of products">
+                  <div class="col-md-2 col-lg-2 col-xl-2">
+                    <img [src]="p.img[0].img" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                  </div>
+                  <div class="col-md-3 col-lg-2 col-xl-2">
+                    <h6 class="text-muted">{{p.name}}</h6>
+                  </div>
+                  <div class="col-md-1 col-lg-1 col-xl-1">
+                  </div>
+                  <div class="col-md-2 col-lg-1 col-xl-1 ">
+                    <h6 style="margin-left: -40px">{{p.prices| number:'1.0-0'}}VND</h6>
+                  </div>
+                  <div class="col-md-1 col-lg-3 col-xl-3 ">
+                    <button type="button" class="btn btn-outline-primary ">-</button>
+                    <button type="button" class="btn btn-outline-primary ">{{p.amount}}</button>
+                    <button type="button" class="btn btn-outline-primary ">+</button>
+                    <!--                                         số lượng sản phẩm-->
+                  </div>
+
+                  <div class="col-md-2 col-lg-1 col-xl-1 ">
+                    <h6 style="margin-left: -60px">{{p.prices * p.amount| number:'1.0-0'}}VND</h6>
+
+                  </div>
+                  <div class="col-md-1 col-lg-2 col-xl-2">
+                    <i class="fa-solid fa-trash-can fa-2xl" style="color: #F7E1AE"></i>
+                  </div>
+                  <hr class="my-4">
+                </div>
+
+                <div class="pt-5">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 " style="background-color:  #f8e5b9">
+              <div class="p-5">
+                <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                <hr class="my-4">
+
+                <div class="d-flex justify-content-between mb-4">
+                  <h5>Sản phẩm</h5>
+                  <h5>{{items}}</h5>
+                </div>
+                <hr class="my-4">
+
+                <div class="d-flex justify-content-between mb-5">
+                  <h5>Tổng giá</h5>
+                  <h5>{{ totalPrices| number:'1.0-0'}}VND</h5>
+                </div>
+
+                <DIV id="myPaypalButtons" >
+                </DIV>
+
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-1">
-          <p>{{p.prices| number:'1.0-0'}}VND</p>
-        </div>
-        <div class="col-md-1">
-          <i  class="fa-solid fa-trash fa-2xl" style="color: #16c5ba; margin-left: 80px"></i>
-        </div>
-
       </div>
     </div>
-    <div class="col-md-1"></div>
   </div>
-
-
-</div>
+</section>
 
 

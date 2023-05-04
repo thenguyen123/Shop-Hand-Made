@@ -5,6 +5,7 @@ import {ShareService} from '../../security-authentication/service/share.service'
 import {Router} from '@angular/router';
 import {Types} from '../../model/types';
 import {TypesService} from '../../service/types.service';
+import {AppUserService} from '../../service/app-user.service';
 
 @Component({
   selector: 'app-header',
@@ -20,10 +21,11 @@ export class HeaderComponent implements OnInit {
   searchName = '';
   types: Types[];
   idTypes = 0;
+  img: string;
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
-              private router: Router, private typesService: TypesService) {
+              private router: Router, private typesService: TypesService, private  appUser: AppUserService) {
   }
 
   loadHeader(): void {
@@ -32,6 +34,7 @@ export class HeaderComponent implements OnInit {
       this.role = this.tokenStorageService.getUser().roles[0];
       this.username = this.tokenStorageService.getUser().username;
     }
+    this.findUser();
     this.isLoggedIn = this.username != null;
     this.getUsernameAccount();
   }
@@ -41,7 +44,9 @@ export class HeaderComponent implements OnInit {
     this.findAllTypes();
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
+
     });
+
     this.loadHeader();
 
   }
@@ -72,6 +77,12 @@ export class HeaderComponent implements OnInit {
   findAllTypes() {
     this.typesService.findAll().subscribe(param => {
       this.types = param;
+    });
+  }
+
+  findUser() {
+    this.appUser.findUser(this.tokenStorageService.getUser().username).subscribe(param => {
+      this.img = param.img;
     });
   }
 }

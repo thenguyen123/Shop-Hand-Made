@@ -68,12 +68,7 @@ export class DetailComponent implements OnInit {
   }
 
   addCart(id: number) {
-    //
-    // this.cartAdd1 = new FormGroup({
-    //   amount: new FormControl(this.amount),
-    //   cart: new FormControl(this.appUser2),
-    //   product: new FormControl(id),
-    // });
+
     this.cart2 = {
       amount: this.amount,
       cart: {id: this.appUser2.idCard},
