@@ -8,6 +8,7 @@ public class CartDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int amount;
+    private String dayPayPal;
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Cart cart;
@@ -15,6 +16,13 @@ public class CartDetail {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
     private boolean isFlag;
+    public String getDayPayPal() {
+        return dayPayPal;
+    }
+
+    public void setDayPayPal(String dayPayPal) {
+        this.dayPayPal = dayPayPal;
+    }
 
     public CartDetail() {
     }

@@ -6,6 +6,8 @@ import com.example.handmade.dto.ProductDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface IProductService {
 
     Product findById(long id);
@@ -13,8 +15,8 @@ public interface IProductService {
     Page<ProductDto> searchByName(Pageable pageable, String name);
 
     Page<ProductDto> searchByNameAndType(Pageable pageable, String name, int idTypes);
+void save(Product product);
 
-    Page<ProductCartDto> findCart(String userName, Pageable pageable);
 
 
 }

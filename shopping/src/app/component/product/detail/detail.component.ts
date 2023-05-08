@@ -13,6 +13,7 @@ import {TokenStorageService} from '../../../security-authentication/service/toke
 import {CardService} from '../../../service/card.service';
 import Swal from 'sweetalert2';
 import {CartDetail} from '../../../model/cart-detail';
+import {ShareService} from '../../../security-authentication/service/share.service';
 
 @Component({
   selector: 'app-detail',
@@ -23,21 +24,21 @@ export class DetailComponent implements OnInit {
   id: number;
   products: ProductDetail;
   imgProduct: Image[];
-  cartAdd1: FormGroup;
   cart: Cart;
-  cartAdd: AddCart;
   product: Product;
   amount = 1;
   nameUser: string;
   appUser2: AppUser;
   cart2: CartDetail;
+  count = 0;
+  quantity = 0;
 
   constructor(private productService: ProductService,
               private route: Router,
               private activatedRoute: ActivatedRoute,
               private  appUser: AppUserService,
               private tokenStorageService: TokenStorageService,
-              private cartService: CardService) {
+              private cartService: CardService, private shareService: ShareService) {
   }
 
   ngOnInit(): void {
@@ -54,6 +55,7 @@ export class DetailComponent implements OnInit {
     this.productService.findById(this.id).subscribe(param => {
       this.products = param;
       this.imgProduct = this.products.imageList;
+      this.quantity = this.products.product.quantity;
     });
   }
 
@@ -68,7 +70,6 @@ export class DetailComponent implements OnInit {
   }
 
   addCart(id: number) {
-
     this.cart2 = {
       amount: this.amount,
       cart: {id: this.appUser2.idCard},
@@ -76,15 +77,38 @@ export class DetailComponent implements OnInit {
     };
     console.log(this.cart2);
     this.cartService.addCart(this.cart2).subscribe(next => {
-      alert('thành công');
+      Swal.fire({
+        text: 'Thêm thành công',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.countItems();
+    });
+  }
+
+  countItems() {
+    this.cartService.findCart(this.nameUser).subscribe(param => {
+      this.count = param.length;
+      this.shareService.setCount(this.count);
     });
   }
 
   subtract() {
-    this.amount--;
+    if (this.amount > 1) {
+      this.amount--;
+    } else {
+      Swal.fire('Số lượng hàng tối thiểu là 1 ');
+    }
   }
 
   add() {
-    this.amount++;
+    if (this.quantity > this.amount) {
+      this.amount++;
+    } else {
+      Swal.fire('Số lượng hàng trong kho không đủ ');
+    }
+
   }
+
 }

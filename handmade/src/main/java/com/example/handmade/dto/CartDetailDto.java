@@ -1,6 +1,6 @@
 package com.example.handmade.dto;
 
-public interface ProductCartDto {
+public interface CartDetailDto {
     String getName();
 
     Long getId();
@@ -11,5 +11,5 @@ public interface ProductCartDto {
 
     long getIdCart();
     long getIdDetail();
-    int getQuantity();
+    String getDayPayPal();
 }

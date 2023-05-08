@@ -13,10 +13,11 @@ import {ActivatedRoute} from '@angular/router';
 export class ListComponent implements OnInit {
   products: Producdto [];
   page = 0;
-  size = 5;
+  size = 4;
   pageCount = 0;
   searchName = '';
   idTypes = 0;
+  flag = true;
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) {
 
@@ -42,24 +43,13 @@ export class ListComponent implements OnInit {
     });
   }
 
+  more() {
+    this.size += 4;
+    this.findAll();
+  }
+
   next() {
     this.page++;
-    this.findAll();
-  }
-
-
-  previous() {
-    this.page--;
-    this.findAll();
-  }
-
-  first() {
-    this.page = 0;
-    this.findAll();
-  }
-
-  last() {
-    this.page = this.pageCount - 1;
     this.findAll();
   }
 }

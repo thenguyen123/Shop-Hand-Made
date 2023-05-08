@@ -11,5 +11,9 @@ export interface Product {
   types?: Types;
   amount?: number;
   idCart?: number;
+  idDetail?: number;
+  quantity?: number;
+  dayPayPal?: string;
+
 }
 

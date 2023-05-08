@@ -7,6 +7,8 @@ import {Types} from '../../model/types';
 import {TypesService} from '../../service/types.service';
 import {AppUserService} from '../../service/app-user.service';
 
+import {CardService} from '../../service/card.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,12 +24,25 @@ export class HeaderComponent implements OnInit {
   types: Types[];
   idTypes = 0;
   img: string;
+  count = 0;
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
-              private router: Router, private typesService: TypesService, private  appUser: AppUserService) {
+              private router: Router, private typesService: TypesService,
+              private  appUser: AppUserService, private cartDetail: CardService) {
+    shareService.getCount().subscribe(param => {
+      this.count = param;
+    });
   }
-
+  countItems() {
+    this.cartDetail.findCart(this.nameUser).subscribe(param => {
+      this.count = param.length;
+    });
+  }
+  findUserName() {
+    this.nameUser = this.tokenStorageService.getUser().username;
+    this.countItems();
+  }
   loadHeader(): void {
     if (this.tokenStorageService.getToken()) {
       this.currentUser = this.tokenStorageService.getUser().username;
@@ -41,10 +56,10 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.findAllTypes();
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
-
+      this.findUserName();
+      this.findAllTypes();
     });
 
     this.loadHeader();
@@ -84,5 +99,9 @@ export class HeaderComponent implements OnInit {
     this.appUser.findUser(this.tokenStorageService.getUser().username).subscribe(param => {
       this.img = param.img;
     });
+  }
+
+  history() {
+    this.router.navigateByUrl('product/history');
   }
 }

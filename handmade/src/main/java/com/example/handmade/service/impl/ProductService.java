@@ -64,18 +64,14 @@ public class ProductService implements IProductService {
             productDto.setImg(images.get(0));
             productDtos.add(productDto);
         }
-
         page1 = new PageImpl<>(productDtos,page.getPageable(),page.getTotalElements());
         return page1;
     }
 
-
     @Override
-    public Page<ProductCartDto> findCart(String userName, Pageable pageable) {
-        return  iProductRepository.findCart(userName, pageable);
-
+    public void save(Product product) {
+        iProductRepository.save(product);
     }
-
 
 
 }

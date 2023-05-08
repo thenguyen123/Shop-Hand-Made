@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AppUserService implements IAppUserService {
+public  class AppUserService implements IAppUserService {
     @Autowired
     private IAppUserRepository iAppUserRepository;
     @Override
     public AppUserDto findByEmail(String name) {
+
         return iAppUserRepository.findAppUsersByEmail(name);
     }
 }

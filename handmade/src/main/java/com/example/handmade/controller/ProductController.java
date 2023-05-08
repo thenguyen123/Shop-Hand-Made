@@ -39,8 +39,8 @@ public class ProductController {
     @GetMapping("product/detail")
     public ResponseEntity findById(@RequestParam long id) {
         Product product = iProductService.findById(id);
-        List<Image> images= new ArrayList<>(product.getImage());
-        ProductDetailDto productDto= new ProductDetailDto();
+        List<Image> images = new ArrayList<>(product.getImage());
+        ProductDetailDto productDto = new ProductDetailDto();
         productDto.setProduct(product);
         productDto.setImageList(images);
         if (productDto == null) {
@@ -48,34 +48,24 @@ public class ProductController {
         }
         return new ResponseEntity(productDto, HttpStatus.OK);
     }
+
     @GetMapping("product/search")
     public ResponseEntity search(@RequestParam(defaultValue = "0") int page,
-                                 @RequestParam(defaultValue = "3") int size ,
+                                 @RequestParam(defaultValue = "3") int size,
                                  @RequestParam(defaultValue = "", required = false) String name,
-                                 @RequestParam(defaultValue = "0", required = false) int idTypes){
+                                 @RequestParam(defaultValue = "0", required = false) int idTypes) {
         Pageable pageable = PageRequest.of(page, size);
         Page<ProductDto> productDto;
-        if(idTypes==0){
-            productDto  = iProductService.searchByName( pageable,name);
-        }else {
-            productDto  = iProductService.searchByNameAndType( pageable,name, idTypes);
+        if (idTypes == 0) {
+            productDto = iProductService.searchByName(pageable, name);
+        } else {
+            productDto = iProductService.searchByNameAndType(pageable, name, idTypes);
         }
         if (productDto == null) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(productDto, HttpStatus.OK);
     }
-    @GetMapping("product/card")
-    public ResponseEntity findCard(@RequestParam(defaultValue = "0") int page,
-                                   @RequestParam(defaultValue = "5") int size ,
-                                   @RequestParam() String userName) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<ProductCartDto> productDto;
 
-        productDto = iProductService.findCart(userName, pageable);
-        if (productDto == null) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity(productDto, HttpStatus.OK);
-    }
+
 }
