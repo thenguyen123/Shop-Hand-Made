@@ -1,0 +1,26 @@
+<div class="container-fluid row" style="margin-top: 10px">
+  <h4 class="d-flex justify-content-center" *ngIf="products.length==0" >Xin lỗi hiện tại hệ thống chưa có sản phẩm </h4>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center " *ngFor="let p of products">
+    <div class="card-jfy-item bg-light" style="width: 18rem;margin-top: 10px;">
+      <div class="card-jfy-image row">
+        <img height="210px" width="300px"
+             [src]="p.img.img" class="card-img-top"
+             alt="...">
+      </div>
+      <div class="row  " style="margin: 1px 1px 1px 1px">
+          <p class="card-title">{{p.product.name.length> 20 ?( p.product.name | slice:0:20 )+ '...': p.product.name }}</p>
+
+      <p style="color: red;" >Giá sản phẩm :  <span   class="card-text">{{p.product.prices | number:'1.0-0' }}</span>Đ</p>
+        <a  class="btn btn-primary" routerLink="/product/detail/{{p.product.id}}"> Xem chi tiết</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center "  *ngIf="products.length!==0" style="margin-top: 20px">
+  <button class="btn btn-outline-success" *ngIf="pageCount!= 1" (click)="more()">Xem Thêm</button>
+</div>
+<div class="d-flex justify-content-center "  *ngIf="products.length==0" style="margin-top: 20px">
+  <button class="btn btn-outline-success" routerLink="/product/list/l1/0">Quay về cửa hàng</button>
+</div>
+

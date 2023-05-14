@@ -1,0 +1,95 @@
+<section class="bg-light">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-5 mt-5">
+        <div class="card-jfy-image row mb-3">
+          <img  width="500px" height="500px" class="card-img-top" [src]="imgChange" alt="Card image cap" id="product-detail">
+        </div>
+        <div class="row" style="width: 50%;">
+          <!--Start Controls-->
+          <div id="carouselExampleFade" class="carousel slide carousel-fade ">
+            <div class="carousel-inner" >
+              <div class="carousel-item active " >
+                <img width="300px" height="200px" [src]="imgChange" class="d-block" alt="...">
+              </div>
+              <div class="carousel-item "  *ngFor="let i of imgProduct">
+                <img width="300px" height="200px" [src]="i.img" class="d-block w-100 " (click)="change(i)"  alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                    data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                    data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- col end -->
+      <div class="col-lg-7 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="h2">{{products.product.name}}</h1>
+            <p class="h3 py-2">{{products.product.prices |number:'1.0-0' }}VND</p>
+            <p class="py-2">
+              <i class="fa fa-star text-warning"></i>
+              <i class="fa fa-star text-warning"></i>
+              <i class="fa fa-star text-warning"></i>
+              <i class="fa fa-star text-warning"></i>
+              <i class="fa fa-star text-secondary"></i>
+              <span class="list-inline-item text-dark">Đánh giá:  4.8 | 36 Bình luận</span>
+            </p>
+            <h6>Mô tả:</h6>
+            <p>{{products.product.description}}</p>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <h6>Hàng trong kho: </h6>
+              </li>
+              <li class="list-inline-item">
+               {{products.product.quantity}}
+              </li>
+            </ul>
+              <input type="hidden" name="product-title" value="Activewear">
+              <div *ngIf="isLoggedIn" class="row">
+                <div class="col-auto">
+                  <ul class="list-inline pb-3">
+                    <li class="list-inline-item text-right">
+                      Số lượng
+                      <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                    </li>
+                    <li class="list-inline-item"><span class="btn " style=" background-color: #F7E1AE" (click)="subtract()" id="btn-minus">-</span></li>
+<!--                    <li class="list-inline-item"><span style="margin-right: 2px" class="btn btn-secondary" *ngIf="quantity!=0">{{amount}}</span></li>-->
+                    <li  *ngIf="quantity==0" class="list-inline-item" ><span style="margin-right: 8px" class="btn btn-secondary" >0</span></li>
+                    <li *ngIf="quantity!==0"  class="list-inline-item" style="width: 100px">
+                      <input style="margin-right: 8px" class="form-control text-center " type="number" (change)="changeAmount()"  [(ngModel)]="amount" name="amount"/></li>
+                    <li class="list-inline-item" ><span class="btn " style=" background-color: #F7E1AE" (click)="add()" id="btn-plus">+</span></li>
+                  </ul>
+                </div>
+              </div>
+            <div>
+              <p>Bạn cần đăng nhập để mua hàng</p>
+              <button class="btn "  style=" background-color: #F7E1AE"  *ngIf="!isLoggedIn"  routerLink="/security/login">Login</button>
+            </div>
+              <div  *ngIf="isLoggedIn" class="row pb-3">
+                <div class="col d-grid">
+                  <button *ngIf="flag" type="submit"  style="background-color: #F7E1AE" class="btn btn-lg" (click)="payPal(products.product)" name="submit" value="buy">Mua</button>
+                </div>
+                <div class="col d-grid">
+                  <button *ngIf="flag"  class="btn  btn-lg"  style="background-color: #F7E1AE" name="submit"  (click)="addCart(products.product.id)" value="addtocard">Thêm vào giỏ hàng</button>
+                </div>
+                <div>
+                  <DIV id="myPaypalButtons" >
+                  </DIV>
+                </div>
+
+                 </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

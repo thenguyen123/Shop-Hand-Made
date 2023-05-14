@@ -1,0 +1,79 @@
+<div class="container" style="margin-top: 120px; margin-bottom: 120px" id="info">
+  <div class="main-body">
+    <div class="p-b-10 mb-4"></div>
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img [src]="user.img" alt="Admin" class="rounded-circle" width="150">
+              <div class="mt-3 text-dark">
+                <h4>{{user?.name}}</h4>
+                <h4>llll</h4>
+                <p class="text-secondary mb-1 text-dark">{{user.email}}</p>
+                <p class="text-secondary mb-1 text-dark" *ngIf="user.gender">Nam</p>
+                <p class="text-secondary mb-1 text-dark" *ngIf="!user.gender">Nữ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Họ và tên</h6>
+              </div>
+              <div class="col-sm-9 text-dark">
+                {{user.name}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-dark">
+                {{user.email}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Số điện thoại</h6>
+              </div>
+              <div class="col-sm-9 text-dark">
+                {{user.phone}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Date Of Birth</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{user?.dayOfBirth}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Địa chỉ</h6>
+              </div>
+              <div class="col-sm-9 text-dark">
+                {{user?.address}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12">
+                <a class="btn btn-info text-dark" style="background-color: #f8e5b9" >Sửa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

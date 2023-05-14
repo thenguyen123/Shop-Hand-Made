@@ -1,0 +1,62 @@
+
+
+
+<!-- LOGIN MODULE -->
+<div class="login" >
+  <div class="wrap">
+    <div class="content">
+      <div class="logo">
+        <a href="#"><img src="http://res.cloudinary.com/dpcloudinary/image/upload/v1506186248/logo.png" alt=""></a>
+      </div>
+      <div id="slideshow">
+        <div class="one">
+          <h2><span>XIN CHÀO</span></h2>
+          <p style="text-align: center">Đăng kí để có trải nghiệm tốt hơn</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="user" >
+      <div class="form-wrap">
+        <div class="tabs">
+          <h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Đăng nhập</span></a></h3>
+        </div>
+        <div class="tabs-content">
+          <div id="login-tab-content" class="active">
+            <form class="login-form" *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+              <div class="form-outline mb-4">
+                <input type="email" id="form2Example1" autofocus formControlName="username" class="input"
+                       placeholder="Tài khoản email" />
+                <p class="error" *ngIf="loginForm.controls.username?.errors?.required && loginForm.controls.username?.touched">Xin vui lòng nhập địa chỉ email.</p>
+                <p class="error" *ngIf="loginForm.controls.username?.errors?.email && loginForm.controls.username?.touched">Địa chỉ email không đúng định dạng.</p>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="password" id="form2Example2" formControlName="password"class="input"
+                       placeholder="Mật khẩu"/>
+                <p class="error" *ngIf="loginForm.controls.password?.errors?.required && loginForm.controls.password?.touched">Xin vui lòng nhập mật khẩu.</p>
+              </div>
+              <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form2Example31"
+                           formControlName="rememberMe"/>
+                    <label >Remember me</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center">
+                <button  class="btn btn-success w-50" >Đăng nhập</button>
+              </div>
+            </form>
+
+            <div class="help-action">
+              <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="#">
+                Quên mật khẩu?</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
