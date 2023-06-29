@@ -1,5 +1,6 @@
 package com.example.handmade;
 
+import com.example.handmade.service.impl.EmailService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -14,6 +15,8 @@ public class HandmadeApplication {
 		System.out.println(b);
 		boolean c =BCrypt.checkpw(a,b);
 		System.out.println(c);
+
+
 	}
 
 }

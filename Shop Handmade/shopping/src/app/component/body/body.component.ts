@@ -10,8 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class BodyComponent implements OnInit {
 
-  products: Producdto [];
-  page = 0;
+    products: Producdto [];
+    page = 0;
   size = 8;
   pageCount = 0;
   searchName = '';

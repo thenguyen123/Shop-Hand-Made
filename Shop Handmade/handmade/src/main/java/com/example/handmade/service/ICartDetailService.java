@@ -3,9 +3,9 @@ package com.example.handmade.service;
 import com.example.handmade.dto.CartDetailDto;
 import com.example.handmade.dto.ProductCartDto;
 import com.example.handmade.model.CartDetail;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 public interface ICartDetailService {
     boolean save(CartDetail cartDetail);
 
