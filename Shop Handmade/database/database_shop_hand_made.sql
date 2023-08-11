@@ -11,7 +11,7 @@ phone_number varchar(45),
 address varchar (225),
 gender boolean,
 day_of_birth date,
-email_account varchar(45) unicode,
+email varchar(45) unicode,
 password varchar(225)
 );
 create table user_role (
@@ -30,12 +30,12 @@ name varchar (45)
 create table product (
 id bigint  primary key auto_increment,
 name varchar(45),
+is_delete boolean,
 prices double,
 description text,
 date_submitted date,
 quantity int ,
 type_product int,
-salesman_id bigint ,
 foreign key (type_product) references types(id)
 );
 create table image(
@@ -44,19 +44,20 @@ img text,
 product_id bigint ,
 foreign key (product_id) references product(id)
 );
-create table order_product (
+create table cart (
 id bigint primary key auto_increment ,
-code_oder varchar(45) unique,
 date_purchase date ,
 total_pay double,
 id_user bigint ,
 foreign key (id_user) references app_user(id)
 );
-create table order_detail(
+create table cart_detail(
 id bigint auto_increment primary key,
 amount int,
+is_flag boolean,
 order_id bigint,
 product_id bigint,
+day_pay_pal date,
 foreign key (product_id) references product(id),
 foreign key (order_id) references order_product(id)
 )
